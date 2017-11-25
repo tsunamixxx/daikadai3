@@ -20,6 +20,7 @@ class TopicsController < ApplicationController
     @topic.user_id = current_user.id #form_forからuser_idは取得できないからcurrent_user.idでidを取得している（current_userはdeviseのメソッド）
     if @topic.save
       redirect_to topics_path, notice: "トピックを作成しました！"
+      NoticeMailer.sendmail_topic(@topic).deliver
     else
       render 'new'
     end
