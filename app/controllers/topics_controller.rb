@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def index
     @topics = Topic.all
@@ -16,6 +17,7 @@ class TopicsController < ApplicationController
   def create
     # Topic.create(topics_params)
     @topic = Topic.new(topics_params)
+    @topic.user_id = current_user.id #form_forからuser_idは取得できないからcurrent_user.idでidを取得している（current_userはdeviseのメソッド）
     if @topic.save
       redirect_to topics_path, notice: "トピックを作成しました！"
     else
@@ -34,6 +36,9 @@ class TopicsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show
   end
 
   def destroy

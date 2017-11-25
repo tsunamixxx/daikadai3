@@ -2,9 +2,10 @@
 <h1>トピック一覧</h1>
 
 <% @topics.each do |topic| %>
-  <p>タイトル:<%= topic.title %></p>
+  <p>タイトル:<%= link_to topic.title, topic_path(topic.id) %></p>
   <p>本文:<%= topic.content %></p>
-  <%= link_to "トピックを編集する", edit_topic_path(topic.id) %>
-  <%= link_to 'トピックを削除する', topic_path(topic.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %>
+  <p>投稿者:<%= topic.user.name %></p>
+  <p><%= link_to "トピックを編集する", edit_topic_path(topic.id) %></p>
+  <p><%= link_to "トピックを削除する", topic_path(topic.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></p>
 <% end %>
-<%= link_to "トピックを作成する", new_topic_path %>
+<p><%= link_to "トピックを作成する", new_topic_path %></p>

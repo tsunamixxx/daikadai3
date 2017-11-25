@@ -1,0 +1,9 @@
+<h1>トピック詳細</h1>
+
+  <p>タイトル:<%= @topic.title %></p>
+  <p>本文:<%= @topic.content %></p>
+  <p>投稿者:<%= @topic.user.name %></p>
+  <p><%= link_to "トピックを編集する", edit_topic_path %></p>
+  <p><%= link_to "トピックを削除する", topic_path, method: :delete, data: { confirm: '本当に削除していいですか？' } %></p>
+  <p><%= link_to "トピックを作成する", new_topic_path %></p>
+  <p><%= link_to "一覧へ戻る", topics_path %></p>
