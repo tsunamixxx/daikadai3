@@ -35,6 +35,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  gem 'pry-rails'
+  gem 'better_errors'
 end
 
 group :development do
@@ -45,6 +48,8 @@ group :development do
   gem 'spring'
 
   gem 'letter_opener_web'
+
+  gem 'dotenv-rails'
 end
 
 gem 'twitter-bootstrap-rails'
@@ -55,3 +60,13 @@ gem 'faker'
 
 gem 'rails_admin'
 gem 'cancan'
+
+gem 'activeresource'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
+#image uploader
+gem 'carrierwave'
+gem 'mini_magick'
