@@ -40,6 +40,9 @@ class TopicsController < ApplicationController
   end
 
   def show
+    # showアククションを定義します。入力フォームと一覧を表示するためインスタンスを2つ生成します。
+    @comment = @topic.comments.build
+    @comments = @topic.comments
   end
 
   def destroy

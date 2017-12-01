@@ -3,7 +3,8 @@
 
 <% @topics.each do |topic| %>
   <p>タイトル:<%= link_to topic.title, topic_path(topic.id) %></p>
-  <p>本文:<%= topic.content %></p>
+  <p>内容:<%= topic.content %></p>
+  <p><%= profile_img(topic.user) %></p>
   <p>投稿者:<%= topic.user.name %></p>
   <p><%= link_to "トピックを編集する", edit_topic_path(topic.id) %></p>
   <p><%= link_to "トピックを削除する", topic_path(topic.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></p>

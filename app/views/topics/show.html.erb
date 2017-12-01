@@ -1,9 +1,24 @@
 <h1>トピック詳細</h1>
 
+  <p><%= notice %></p>
+
   <p>タイトル:<%= @topic.title %></p>
   <p>本文:<%= @topic.content %></p>
+  <p><%= profile_img(@topic.user) %></p>
   <p>投稿者:<%= @topic.user.name %></p>
-  <p><%= link_to "トピックを編集する", edit_topic_path %></p>
-  <p><%= link_to "トピックを削除する", topic_path, method: :delete, data: { confirm: '本当に削除していいですか？' } %></p>
+  <% if @topic.user_id == current_user.id %>
+    <p><%= link_to "トピックを編集する", edit_topic_path %></p>
+    <p><%= link_to "トピックを削除する", topic_path, method: :delete, data: { confirm: '本当に削除していいですか？' } %></p>
+  <% end %>
   <p><%= link_to "トピックを作成する", new_topic_path %></p>
   <p><%= link_to "一覧へ戻る", topics_path %></p>
+
+  <p>コメント一覧</p>
+  <div id="comments_area">
+    <%= render partial: 'comments/index', locals: { comments: @comments, topic: @topic } %>
+  </div>
+  <%= render partial: 'comments/form', locals: { comment: @comment, topic: @topic } %>
+  <% if current_user.id == @topic.user_id %>
+    <%= link_to '編集', edit_topic_path(@topic) %> |
+  <% end %>
+  <%= link_to '戻る', topics_path %>

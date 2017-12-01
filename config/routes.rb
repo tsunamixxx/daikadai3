@@ -9,9 +9,15 @@ Rails.application.routes.draw do
   }
 
   resources :topics do
-    collection do
-      post :confirm
-    end
+    resources :comments
+    post :confirm, on: :collection
+  end
+
+  resources :users, only:[:index, :show]
+  resources :relationships, only:[:create, :destroy]
+
+  resources :conversations do
+    resources :messages
   end
 
   root 'top#index'
