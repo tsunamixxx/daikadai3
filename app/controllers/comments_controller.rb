@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     # クライアント要求に応じてフォーマットを変更
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to topic_path(@topic), notice: '<h1>コメントを投稿しました。</h1>' }
+        format.html { redirect_to topic_path(@topic), notice: "コメントを投稿しました！" }
         # JS形式でレスポンスを返します。
         format.js { render :index }
 
