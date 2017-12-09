@@ -1,14 +1,26 @@
-<div class="container">
-  <h2>ユーザ一覧</h2>
+<h1 class="title">ユーザ一覧</h1>
+<div class="container-fluid">
+<div class="row justify-content-center">
+<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
+
   <% @users.each do |user| %>
-      <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
-        <% if user.id != current_user.id %>
-        <%= profile_img(user) %>
-        <p><%= link_to user.name, user %></p>
-        <%= user.email %>
-        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
-        <%= render partial: 'follow_form', locals: { user: user } if signed_in?   %>
-        <% end %>
+    <% if user.id != current_user.id %>
+      <div class="wrap panel panel-default">
+        <div class="panel-body">
+          <ul>
+            <li style="text-align: center;"><%= profile_img(user) %></li>
+            <li><%= link_to user.name, user %></li>
+            <li><%= user.email %></li>
+          </ul>
+          <div style="text-align: center;">
+            <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+            <%= render partial: 'follow_form', locals: { user: user } if signed_in? %>
+          </div>
+        </div>
       </div>
+    <% end %>
   <% end %>
+
+</div>
+</div>
 </div>

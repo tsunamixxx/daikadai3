@@ -1,24 +1,37 @@
-<h1>トピック詳細</h1>
+<h1 class="title">トピック詳細</h1>
+<p style="text-align: center; margin-top: 20px;"><%= notice %></p>
 
-  <p><%= notice %></p>
+<div class="container-fluid">
+<div class="row justify-content-center">
+<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
 
-  <p>タイトル:<%= @topic.title %></p>
-  <p>本文:<%= @topic.content %></p>
-  <p><%= profile_img(@topic.user) %></p>
-  <p>投稿者:<%= @topic.user.name %></p>
-  <% if @topic.user_id == current_user.id %>
-    <p><%= link_to "トピックを編集する", edit_topic_path %></p>
-    <p><%= link_to "トピックを削除する", topic_path, method: :delete, data: { confirm: '本当に削除していいですか？' } %></p>
-  <% end %>
+<div class="wrap">
+  <ul>
+    <li>タイトル:<%= @topic.title %></li>
+    <li>本文:<%= @topic.content %></li>
+    <li><%= profile_img(@topic.user) %></li>
+    <li style="margin-bottom: 20px;">投稿者:<%= @topic.user.name %></li>
+    <% if @topic.user_id == current_user.id %>
+      <p><%= link_to "トピックを編集する", edit_topic_path %></p>
+      <p><%= link_to "トピックを削除する", topic_path, method: :delete, data: { confirm: '本当に削除していいですか？' } %></p>
+    <% end %>
+  </ul>
   <p><%= link_to "トピックを作成する", new_topic_path %></p>
   <p><%= link_to "一覧へ戻る", topics_path %></p>
-
-  <p>コメント一覧</p>
+</div>
+<div class="wrap">
+  <h2 class="subhead">コメント一覧</h2>
   <div id="comments_area">
     <%= render partial: 'comments/index', locals: { comments: @comments, topic: @topic } %>
   </div>
   <%= render partial: 'comments/form', locals: { comment: @comment, topic: @topic } %>
+  <br>
   <% if current_user.id == @topic.user_id %>
     <%= link_to '編集', edit_topic_path(@topic) %> |
   <% end %>
   <%= link_to '戻る', topics_path %>
+</div>
+
+</div>
+</div>
+</div>

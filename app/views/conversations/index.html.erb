@@ -1,8 +1,10 @@
-<div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+<h1 class="title">メッセージ一覧</h1>
+<div class="container-fluid">
+<div class="row justify-content-center">
+<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
+
+<div class="wrap">
   <table class="table table-hover">
-    <thead>
-      <h2>メッセージ一覧</h2>
-    </thead>
     <tbody>
       <% @conversations.each do |conversation| %>
         <td>
@@ -13,4 +15,8 @@
       <% end %>
     </tbody>
   </table>
+</div>
+
+</div>
+</div>
 </div>

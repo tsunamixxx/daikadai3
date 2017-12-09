@@ -1,21 +1,33 @@
+<div class="container-fluid">
+<div class="row justify-content-center">
+<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
+
+<div class="wrap">
 <%= form_for(@topic, url: choose_new_or_edit) do |f| %>
   <% if @topic.errors.any? %>
     <div id="error_explanation">
-      <h2><%= @topic.errors.count %>件のエラーがあります！</h2>
+      <p class="alert alert-danger"><%= @topic.errors.count %>件のエラーがあります！</p>
       <ul>
-        <%= @topic.errors.full_messages.each do |msg| %>
+        <% @topic.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.label :タイトル %>
+  <%= f.text_field :title, class: 'form-control' %>
   <br>
-  <%= f.label :content %>
-  <%= f.text_field :content %>
+  <%= f.label :内容 %>
+  <%= f.text_field :content, class: 'form-control' %>
   <br>
-  <%= f.submit %>
+  <%= f.submit "確認画面へ", class: 'btn btn-primary' %>
 <% end %>
-<%= link_to "トピック一覧画面にもどる", topics_path %>
+<div style="margin-top: 20px;">
+  <%= link_to "トピック一覧へ", topics_path %>
+</div>
+</div>
+
+</div>
+</div>
+</div>
