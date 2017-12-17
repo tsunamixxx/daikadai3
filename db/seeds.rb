@@ -22,13 +22,13 @@
 end
 
 i = 0
-n = User.last
+n = User.last.id
 while i < 100
   Topic.create(
     title: "あああ",
     content: "hoge",
     user_id: n
   )
-  n = (n - 1)
+  n = n - 1
   i = i + 1
 end
