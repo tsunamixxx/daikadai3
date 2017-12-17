@@ -29,6 +29,6 @@ while i < 100
     content: "hoge",
     user_id: n
   )
-  n = n - 1
+  n = (n - 1)
   i = i + 1
 end

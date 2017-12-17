@@ -11,7 +11,7 @@
     <ul>
       <li>タイトル：<%= link_to topic.title, topic_path(topic.id) %></li>
       <li>内容：<%= topic.content %></li>
-      <li><%= profile_img(topic.user) %></li>
+      <li><%= profile_img(topic.user) if topic.user %></li>
       <li>投稿者：<%= topic.user.name if topic.user %></li>
     </ul>
     <div style="text-align: center;">
