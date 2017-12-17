@@ -6,9 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# Faker（https://github.com/stympy/faker）を参照して適当なクラスを使用する。
 100.times do |n|
   email = Faker::Internet.email
   password = "password"
+  uid = Faker::Address.city
+  provider = Faker::Address.street_name
   User.create!(email: email,
                password: password,
                password_confirmation: password,
