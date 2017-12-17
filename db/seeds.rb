@@ -10,12 +10,14 @@
 100.times do |n|
   email = Faker::Internet.email
   password = "password"
-  uid = Faker::Address.city
-  provider = Faker::Address.street_name
+  aa = Faker::Address.city
+  bb = Faker::Address.street_name
   User.create!(email: email,
                password: password,
                password_confirmation: password,
-               name: Faker::Name.name
+               name: Faker::Name.name,
+               uid: aa,
+               provider: bb
                )
 end
 
