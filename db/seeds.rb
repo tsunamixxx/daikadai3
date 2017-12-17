@@ -21,12 +21,14 @@
                )
 end
 
-n = 1
-while n <= 100
+i = 0
+n = User.last
+while i < 100
   Topic.create(
     title: "あああ",
     content: "hoge",
     user_id: n
   )
-  n = n + 1
+  n = n - 1
+  i = i + 1
 end
