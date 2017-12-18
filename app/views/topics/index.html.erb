@@ -14,7 +14,7 @@
       <li><%= profile_img(topic.user) if topic.user %></li>
       <li>投稿者：<%= topic.user.name if topic.user %></li>
     </ul>
-    <% if @topic.user_id == current_user.id %>
+    <% if topic.user_id == current_user.id %>
       <div style="text-align: center;">
         <%= link_to "トピックを編集する", edit_topic_path(topic.id) %>
         <%= link_to "トピックを削除する", topic_path(topic.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %>
